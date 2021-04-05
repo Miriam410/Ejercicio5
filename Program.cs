@@ -8,17 +8,23 @@ namespace Ejercicio5
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            char letra;         
+            // 5. Lea las teclas presionadas y finalice al presionar Ctrl+F (Ctrl y F al mismo tiempo)
+            ConsoleKeyInfo tecla;
             do
             {
                 Console.WriteLine("Ingrese las letras presionadas.");
-                letra = Convert.ToChar(Console.ReadLine());
+                char letra = Convert.ToChar(Console.ReadLine());
+                Console.WriteLine("Usteed ha presionado la tecla " + letra);
                 Console.WriteLine("Para finalizar presione  Ctrl+F al mismo tiempo");
-            } while ();
-   
+                tecla = Console.ReadKey(true);
+                if (((tecla.Modifiers & ConsoleModifiers.Control) != 0) &&
+                    (tecla.Key == ConsoleKey.F))
+                {
+                    break;
+                }
+            } while (true);
         }
     }
 }
